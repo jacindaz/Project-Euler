@@ -28,49 +28,49 @@ POSSIBILITIES TO ELIMNATE:
 
 =end
 
+#check if n is a palindrome----------------------------------------------------
+def isPalindrome?(n)
+	#convert to string (reverse method only works on strings), reverse, convert back to int
+	reverse_n = n.to_s.reverse.to_i
+	return (reverse_n == n)
+end
+
+#do numbers ending with zero (can't be a palindrome)-----------------------------
+def endsZero?(n1, n2)
+	num1_str = n1.to_s
+	num2_str = n2.to_s
+	return (num1_str[-1] != "0") || (num2_str[-1] != "0")
+end
+
+
+
+# #return largest palindrome product------------------------------------------------
 def largestProductPalindrome(n)
 	number1 = n
 	number2 = n
 
 	done = false
-
 	largest_palindrome = 1
 
-	#MULTIPLY the two numbers------------------------------------------------------------
-	while not done
-		num1_str = number1.to_s
-		num2_str = number2.to_s
-
-		#checking if last digit in each number is zero-----------------------------------
-		if num1_str[-1] || num2_str[-1] != 0
-			product = number1 * number2
-			product_len = product.length
-			if product.to_s[0] == product.to_s[-1]
-
-		#if either number ends in zero----------------------------------------------------------
+	if endsZero?(number1, number2) == false
+		product = number1 * number2
+		if isPalindrome?(product) == true
+			return product
 		else
-			number2 -= 1
-		end
 
+	elsif endsZero?(number1, number2) == true
+		number1 -= 1
+		number2 -= 1
 	end
 
-
-	#are the 2 numbers a PALINDROME?----------------------------------------------------
-
-
-	#IF NO substract 1 from number2-------------------------------------------------------------------
+end #end for largestProductPalindrome function
 
 
-	#IF YES store the number in largest_palindrome variable, and then SUBTRACT 1 from number 2++-------------
 
-end
+#TEST CASES---------------------------------------------------------------------------
+largestProductPalindrome(120)
 
 
-def isPalindrome?(n)
-	#convert to string (reverse method only works on strings), reverse, convert back to int
-	reverse_n = n.to_s.reverse.to_i
-	return reverse_n && n
-end
 
 
 
