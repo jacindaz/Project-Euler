@@ -36,41 +36,76 @@ def isPalindrome?(n)
 end
 
 #do numbers ending with zero (can't be a palindrome)-----------------------------
+#returns true if
 def endsZero?(n1, n2)
 	num1_str = n1.to_s
 	num2_str = n2.to_s
-	return (num1_str[-1] != "0") || (num2_str[-1] != "0")
+	return (num1_str[-1] == "0") || (num2_str[-1] == "0")
 end
 
+#puts "Do either of these #s end in zero? #{endsZero?(99, 90)}"
+#returns true (one or both #s end in zero)
+
+#puts "Do either of these #s end in zero? #{endsZero?(99, 98)}"
+#returns false (neither #s end in zero)
 
 
-# #return largest palindrome product------------------------------------------------
+#return largest palindrome product------------------------------------------------
 def largestProductPalindrome(n)
 	number1 = n
 	number2 = n
+	puts "Num 1(#{number1}) and 2(#{number2})"
 
 	done = false
-	largest_palindrome = 1
 
-	if endsZero?(number1, number2) == false
-		product = number1 * number2
-		if isPalindrome?(product) == true
-			return product
+	while not done
+		puts "Inside while not done loop"
+		if endsZero?(number1, number2) == false
+			puts "Num 1(#{number1}) and 2(#{number2}) do not end in zero"
+			product = number1 * number2
+			done = true
+			return nil
 		else
-
-	elsif endsZero?(number1, number2) == true
-		number1 -= 1
-		number2 -= 1
+			puts "I'm in the else statement, a number ends in zero"
+			done = true
+		end
 	end
+end
 
-end #end for largestProductPalindrome function
+	# 		#outer while loop, loop through number1 completely
+	# 		while number1 > 1
+	# 			puts "Inside while number1 > 1 loop"
+	# 			number2 = number1
+	# 			#inner while loop, loop through number2 completely
+	# 			while number2 > 1
+	# 				puts "Inside while number2 > 1 loop"
+	# 				if isPalindrome?(product) == true
+	# 					done = true
+	# 					puts "This is a palindrome! Num1: #{number1}, Num2: #{number2}, Palindrome: #{product}"
+	# 					return number1, number2
+	# 				else
+	# 					number2 -= 1
+	# 				end
+	# 			end
+	# 			number1 -= 1
+	# 		end
+	# 	elsif endsZero?(number1, number2) == true
+	# 		puts "Number 1 and 2 end in zero"
+	# 		number1 -= 1
+	# 		number2 -= 1
+	# 	end
+	# end #end for while loop
+
+
+#end #end for largestProductPalindrome function
 
 
 
 #TEST CASES---------------------------------------------------------------------------
-largestProductPalindrome(120)
 
 
+#returns 91, 99
+largestProductPalindrome(90)
 
 
 
