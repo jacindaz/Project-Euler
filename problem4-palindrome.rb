@@ -36,68 +36,67 @@ def isPalindrome?(n)
 end
 
 #do numbers ending with zero (can't be a palindrome)-----------------------------
-#returns true if
+#returns true if both end in zero, false if neither end in zero, or the number itself if
 def endsZero?(n1, n2)
 	num1_str = n1.to_s
 	num2_str = n2.to_s
-	return (num1_str[-1] == "0") || (num2_str[-1] == "0")
+	if num1_str[-1] == "0" && num2_str[-1] == "0"
+		return true
+	elsif num1_str[-1] == "0"
+		return n1
+	elsif num2_str[-1] == "0"
+		return n2
+	elsif num1_str[-1] != "0" && num2_str[-1] != "0"
+		return false
+	end #ending the if statement
 end
 
-#puts "Do either of these #s end in zero? #{endsZero?(99, 90)}"
-#returns true (one or both #s end in zero)
-
-#puts "Do either of these #s end in zero? #{endsZero?(99, 98)}"
-#returns false (neither #s end in zero)
+#endsZero? TEST CASES------------------------------------
+#puts endsZero?(70, 91)     #=> returns 91
+#puts endsZero?(71, 90)     #=> returns 71
+#puts endsZero?(71, 91)     #=> returns false
+#puts endsZero?(70, 90)     #=> returns true
 
 
 #return largest palindrome product------------------------------------------------
-def largestProductPalindrome(n)
-	number1 = n
-	number2 = n
-	puts "Num 1(#{number1}) and 2(#{number2})"
+# def largestProductPalindrome(n)
+# 	number1 = n
+# 	number2 = n
+# 	palindrome_array = []
 
-	done = false
+# 	inner_done = false
+# 	outer_done = false
 
-	while not done
-		puts "Inside while not done loop"
-		if endsZero?(number1, number2) == false
-			puts "Num 1(#{number1}) and 2(#{number2}) do not end in zero"
-			product = number1 * number2
-			done = true
-			return nil
-		else
-			puts "I'm in the else statement, a number ends in zero"
-			done = true
-		end
-	end
-end
+# 	while number1 > 0
 
-	# 		#outer while loop, loop through number1 completely
-	# 		while number1 > 1
-	# 			puts "Inside while number1 > 1 loop"
-	# 			number2 = number1
-	# 			#inner while loop, loop through number2 completely
-	# 			while number2 > 1
-	# 				puts "Inside while number2 > 1 loop"
-	# 				if isPalindrome?(product) == true
-	# 					done = true
-	# 					puts "This is a palindrome! Num1: #{number1}, Num2: #{number2}, Palindrome: #{product}"
-	# 					return number1, number2
-	# 				else
-	# 					number2 -= 1
-	# 				end
-	# 			end
-	# 			number1 -= 1
-	# 		end
-	# 	elsif endsZero?(number1, number2) == true
-	# 		puts "Number 1 and 2 end in zero"
-	# 		number1 -= 1
-	# 		number2 -= 1
-	# 	end
-	# end #end for while loop
+# 		while number2 > 0
+# 			#puts "Inside while not done loop"
+# 			if endsZero?(number1, number2) == false
+# 				#puts "Num 1(#{number1}) and 2(#{number2}) do not end in zero"
+# 				product = number1 * number2
+# 				if isPalindrome?(product) == true
+# 					palindrome_array << product
+# 					#inner_done = true
+# 					puts "This is a palindrome! Num1: #{number1}, Num2: #{number2}, Palindrome: #{product}"
+# 		 			#return number1, number2
+# 				end #end isPalindrome? if statement
+# 				number2 -=1
+# 			else
+# 				#puts "I'm in the else statement, a number ends in zero"
+# 				number1 -= 1
+# 				number2 -= 1
+# 			end
+# 		end #end for while loop, number2 -= 1
+# 		number1 -= 1
+# 	end #end for while loop, number1 -= 1
+
+# 	#sort the palindrome array, and return the last element (largest palindrome)--------
+# 	palindrome_array.sort!
+# 	return palindrome_array[-1]
 
 
-#end #end for largestProductPalindrome function
+# end #end for largestProductPalindrome function
+
 
 
 
@@ -105,7 +104,7 @@ end
 
 
 #returns 91, 99
-largestProductPalindrome(90)
+largestProductPalindrome(999)
 
 
 
