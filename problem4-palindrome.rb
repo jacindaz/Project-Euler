@@ -59,43 +59,56 @@ end
 
 
 #return largest palindrome product------------------------------------------------
-# def largestProductPalindrome(n)
-# 	number1 = n
-# 	number2 = n
-# 	palindrome_array = []
+def largestProductPalindrome(n)
+	stop_whileLoop = n * (3/4.0)
+	puts stop_whileLoop
 
-# 	inner_done = false
-# 	outer_done = false
+	number1 = n
+	number2 = n
+	palindrome_array = []
 
-# 	while number1 > 0
+	inner_done = false
+	outer_done = false
 
-# 		while number2 > 0
-# 			#puts "Inside while not done loop"
-# 			if endsZero?(number1, number2) == false
-# 				#puts "Num 1(#{number1}) and 2(#{number2}) do not end in zero"
-# 				product = number1 * number2
-# 				if isPalindrome?(product) == true
-# 					palindrome_array << product
-# 					#inner_done = true
-# 					puts "This is a palindrome! Num1: #{number1}, Num2: #{number2}, Palindrome: #{product}"
-# 		 			#return number1, number2
-# 				end #end isPalindrome? if statement
-# 				number2 -=1
-# 			else
-# 				#puts "I'm in the else statement, a number ends in zero"
-# 				number1 -= 1
-# 				number2 -= 1
-# 			end
-# 		end #end for while loop, number2 -= 1
-# 		number1 -= 1
-# 	end #end for while loop, number1 -= 1
+	while number1 > stop_whileLoop
 
-# 	#sort the palindrome array, and return the last element (largest palindrome)--------
-# 	palindrome_array.sort!
-# 	return palindrome_array[-1]
+		while number2 > stop_whileLoop
+			#puts "Inside while not done loop"
+			if endsZero?(number1, number2) == false
+				#puts "Num 1(#{number1}) and 2(#{number2}) do not end in zero"
+				product = number1 * number2
+				if isPalindrome?(product) == true
+					palindrome_array << product
+					#inner_done = true
+					#puts "This is a palindrome! Num1: #{number1}, Num2: #{number2}, Palindrome: #{product}"
+		 			#puts "These are palindromes: #{palindrome_array}"
+		 			#puts nil
+		 			#return number1, number2
+				end #end isPalindrome? if statement
+				number2 -=1
+			elsif endsZero?(number1, number2) == number1
+				number1 -= 1
+			elsif endsZero?(number1, number2) == number2
+					number2 -= 1
+			else #when both numbers end with zero
+					number1 -= 1
+					number2 -= 1
+			end
+		end #end for while loop, number2 -= 1
+
+		#reduce number1 by 1, reset number2 to loop through again
+		number1 -= 1
+		number2 = n
+	end #end for while loop, number1 -= 1
+
+	#sort the palindrome array, and return the last element (largest palindrome)--------
+	remove_dupes = palindrome_array.uniq
+	sorted_palindrome_array = remove_dupes.sort
+	puts "Final array of palindromes: #{sorted_palindrome_array}, length: #{sorted_palindrome_array.length}"
+	return sorted_palindrome_array[-1]
 
 
-# end #end for largestProductPalindrome function
+end #end for largestProductPalindrome function
 
 
 
