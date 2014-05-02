@@ -16,4 +16,19 @@ RANDOM THOUGHTS:
 
 =end
 
+def factor?(larger_num, smaller_num)
+  return (larger_num % smaller_num) == 0
+end
+#puts factor?(20, 3)
+#puts factor?(20, 10)
 
+
+
+
+
+def smallestNumber(divisible_by)
+
+
+
+
+end
