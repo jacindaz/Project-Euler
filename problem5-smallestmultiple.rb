@@ -38,21 +38,19 @@ def arrayDivisible(n)
         puts "If statement, highest_num: #{highest_num}, number: #{number}"
         factors_result << highest_num
         numbers_range.delete(number)
-        #highest_num -= 1
       end
-      puts "exit if statement"
+      #puts "exit if statement"
     end #end each loop
-    puts "exit each loop"
-    #return factors_result
+    #puts "exit each loop"
     highest_num -= 1
   end #end while loop
 
   factors_result = factors_result.uniq.sort
-  puts "This is the array: #{factors_result}"
+  puts "This is the array: #{factors_result}, numbers_range: #{numbers_range}"
 
 end
 
-arrayDivisible(10)
+arrayDivisible(20)
 
 
 #def smallestNumber(divisible_by)
