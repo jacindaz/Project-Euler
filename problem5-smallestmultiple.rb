@@ -25,30 +25,21 @@ end
 #returns an array of numbers that are not divisible by each other
 #given the highest number in a range (n), if n=10, range is 1..10
 def arrayDivisible(n)
-  factors_result = []
-  highest_num = n
   numbers_range = *(2..n)
+  not_factors = numbers_range
 
-  while highest_num > 1
-    #puts "inside while loop, highest_num: #{highest_num}"
-    numbers_range.each do |number|
-      #puts "inside each loop, highest_num: #{highest_num}, number: #{number}"
-      if factor?(highest_num, number) == false
-        next if highest_num <= number
-        puts "If statement, highest_num: #{highest_num}, number: #{number}"
-        factors_result << highest_num
-        numbers_range.delete(number)
+  numbers_range.each do |smaller_number|
+    numbers_range.each do |bigger_number|
+      if factor?(bigger_number, smaller_number) == true
+        not_factors.delete(smaller_number)
       end
-      #puts "exit if statement"
-    end #end each loop
-    #puts "exit each loop"
-    highest_num -= 1
-  end #end while loop
+      puts "smaller: #{smaller_number}, bigger: #{bigger_number}, array: #{not_factors}"
+      break
+    end #end bigger_number each loop
+  end #end smaller_number each loop
 
-  factors_result = factors_result.uniq.sort
-  puts "This is the array: #{factors_result}, numbers_range: #{numbers_range}"
 
-end
+end #end arrayDivisible method
 
 arrayDivisible(20)
 
@@ -58,3 +49,4 @@ arrayDivisible(20)
 
 
 #end
+
